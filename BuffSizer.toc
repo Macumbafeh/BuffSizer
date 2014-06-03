@@ -1,0 +1,14 @@
+## Interface: 20400
+## Title: BuffSizer
+## Notes: Small addon that makes the buff and debuff resizing a bit more sane
+## Version: 1.0
+## Author: Schaka
+## SavedVariables: BuffSizerDB
+
+libs\LibStub\LibStub.lua
+libs\LibSimpleOptions-1.0\lib.xml
+
+BuffSizer.lua
+BuffBelow.lua
+TopBuffToDebuff.lua
+TopDebuffToBuff.lua
