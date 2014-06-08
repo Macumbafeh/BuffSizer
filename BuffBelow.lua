@@ -10,6 +10,16 @@ local debuffOffset = BuffSizerDB.debuffOffset
 	
 function BuffSizer_TargetBelow()
 
+	-- move ToT
+	local biggestIcon
+	if BuffSizerDB.targetbuffSize < BuffSizerDB.targetdebuffSize then
+		biggestIcon = BuffSizerDB.targetdebuffSize
+	else
+		biggestIcon = BuffSizerDB.targetbuffSize
+	end
+	TargetofTargetFrame:ClearAllPoints()
+	TargetofTargetFrame:SetPoint("BOTTOMRIGHT", TargetFrame,-biggestIcon,-10)
+	
 	-- Update buff positioning/size
 	function TargetFrame_UpdateBuffAnchor(buffName, index, numFirstRowBuffs, numDebuffs, buffSize, offset, ...)
 		local buff = getglobal(buffName..index);
@@ -131,8 +141,21 @@ function BuffSizer_TargetBelow()
 		end
 		TargetFrameSpellBar:SetPoint("BOTTOM", "TargetFrame", "BOTTOM", -15, -yPos);
 	end
+end
+
+function BuffSizer_FocusBelow()
 	
-		function FocusFrame_UpdateBuffAnchor(buffName, index, numFirstRowBuffs, numDebuffs, buffSize, offset, ...)
+	-- move ToF
+	local biggestIcon
+	if BuffSizerDB.focusbuffSize < BuffSizerDB.focusdebuffSize then
+		biggestIcon = BuffSizerDB.focusdebuffSize
+	else
+		biggestIcon = BuffSizerDB.focusbuffSize
+	end
+	TargetofFocusFrame:ClearAllPoints()
+	TargetofFocusFrame:SetPoint("BOTTOMRIGHT", FocusFrame,-biggestIcon,-10)
+	
+	function FocusFrame_UpdateBuffAnchor(buffName, index, numFirstRowBuffs, numDebuffs, buffSize, offset, ...)
 		local buff = getglobal(buffName..index);
 		buffSize = BuffSizerDB.focusbuffSize
 		offset = buffOffset
@@ -173,14 +196,11 @@ function BuffSizer_TargetBelow()
 			-- Just anchor to previous
 			buff:SetPoint("TOPLEFT", getglobal(buffName..(index-1)), "TOPRIGHT", offset, 0);
 		end
-
 		-- Resize
 		buff:SetWidth(buffSize);
 		buff:SetHeight(buffSize);
 	end
-end
-
-function BuffSizer_FocusBelow()
+		
 	-- Update debuff positioning/size
 	function FocusFrame_UpdateDebuffAnchor(buffName, index, numFirstRowBuffs, numBuffs, buffSize, offset, ...)
 		local buff = getglobal(buffName..index);
