@@ -123,7 +123,7 @@ function BuffSizer_TargetTopDebuffToBuff()
 		local i = 1
 		while (FocusFrame:GetWidth()*0.8) > (BuffSizerDB.focusbuffSize*i) do
 			numFirstRowBuffs = i
-			Focus_BUFFS_PER_ROW = i
+			FOCUS_BUFFS_PER_ROW = i
 			i = i + 1	
 		end
 		
@@ -143,9 +143,9 @@ function BuffSizer_TargetTopDebuffToBuff()
 			buff:SetPoint("BOTTOMLEFT", getglobal(buffName..1), "TOPLEFT", 0, FocusFrame.buffSpacing);
 			FocusFrameBuffs:SetPoint("TOPLEFT", buff, "TOPLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
-		elseif ( (index > numFirstRowBuffs) and (mod(index+(Focus_BUFFS_PER_ROW-numFirstRowBuffs), Focus_BUFFS_PER_ROW) == 1)) then
+		elseif ( (index > numFirstRowBuffs) and (mod(index+(FOCUS_BUFFS_PER_ROW-numFirstRowBuffs), FOCUS_BUFFS_PER_ROW) == 1)) then
 			-- Make a new row, have to take the number of buffs in the first row into account
-			buff:SetPoint("BOTTOMLEFT", getglobal(buffName..(index-Focus_BUFFS_PER_ROW)), "TOPLEFT", 0, FocusFrame.buffSpacing);
+			buff:SetPoint("BOTTOMLEFT", getglobal(buffName..(index-FOCUS_BUFFS_PER_ROW)), "TOPLEFT", 0, FocusFrame.buffSpacing);
 			FocusFrameBuffs:SetPoint("TOPLEFT", buff, "TOPLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
 		else
@@ -167,7 +167,7 @@ function BuffSizer_TargetTopDebuffToBuff()
 		local i = 1
 		while (FocusFrame:GetWidth()*0.8) > (BuffSizerDB.BuffSizerDB.focusdebuffSize*i) do
 			numFirstRowBuffs = i
-			Focus_BUFFS_PER_ROW = i
+			FOCUS_BUFFS_PER_ROW = i
 			i = i + 1	
 		end
 		

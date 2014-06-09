@@ -18,7 +18,7 @@ function BuffSizer_TargetBelow()
 		biggestIcon = BuffSizerDB.targetbuffSize
 	end
 	TargetofTargetFrame:ClearAllPoints()
-	TargetofTargetFrame:SetPoint("BOTTOMRIGHT", TargetFrame,-biggestIcon,-10)
+	TargetofTargetFrame:SetPoint("BOTTOMRIGHT", TargetFrame, -10,-10)
 	
 	-- Update buff positioning/size
 	function TargetFrame_UpdateBuffAnchor(buffName, index, numFirstRowBuffs, numDebuffs, buffSize, offset, ...)
@@ -153,7 +153,7 @@ function BuffSizer_FocusBelow()
 		biggestIcon = BuffSizerDB.focusbuffSize
 	end
 	TargetofFocusFrame:ClearAllPoints()
-	TargetofFocusFrame:SetPoint("BOTTOMRIGHT", FocusFrame,-biggestIcon,-10)
+	TargetofFocusFrame:SetPoint("BOTTOMRIGHT", FocusFrame,-15,-10)
 	
 	function FocusFrame_UpdateBuffAnchor(buffName, index, numFirstRowBuffs, numDebuffs, buffSize, offset, ...)
 		local buff = getglobal(buffName..index);
@@ -187,9 +187,9 @@ function BuffSizer_FocusBelow()
 			buff:SetPoint("TOPLEFT", getglobal(buffName..(numFirstRowBuffs+1)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
 			FocusFrameBuffs:SetPoint("BOTTOMLEFT", buff, "BOTTOMLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
-		elseif ( (index > numFirstRowBuffs) and (mod(index+(Focus_BUFFS_PER_ROW-numFirstRowBuffs), Focus_BUFFS_PER_ROW) == 1) and not hasTargetofFocus ) then
+		elseif ( (index > numFirstRowBuffs) and (mod(index+(FOCUS_BUFFS_PER_ROW-numFirstRowBuffs), FOCUS_BUFFS_PER_ROW) == 1) and not hasTargetofFocus ) then
 			-- Make a new row, have to take the number of buffs in the first row into account
-			buff:SetPoint("TOPLEFT", getglobal(buffName..(index-Focus_BUFFS_PER_ROW)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
+			buff:SetPoint("TOPLEFT", getglobal(buffName..(index-FOCUS_BUFFS_PER_ROW)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
 			FocusFrameBuffs:SetPoint("BOTTOMLEFT", buff, "BOTTOMLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
 		else
@@ -230,9 +230,9 @@ function BuffSizer_FocusBelow()
 			buff:SetPoint("TOPLEFT", getglobal(buffName..(numFirstRowBuffs+1)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
 			FocusFrameDebuffs:SetPoint("BOTTOMLEFT", buff, "BOTTOMLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
-		elseif ( (index > numFirstRowBuffs) and (mod(index+(Focus_DEBUFFS_PER_ROW-numFirstRowBuffs), Focus_DEBUFFS_PER_ROW) == 1) and not hasTargetofFocus ) then
+		elseif ( (index > numFirstRowBuffs) and (mod(index+(FOCUS_DEBUFFS_PER_ROW-numFirstRowBuffs), FOCUS_DEBUFFS_PER_ROW) == 1) and not hasTargetofFocus ) then
 			-- Make a new row
-			buff:SetPoint("TOPLEFT", getglobal(buffName..(index-Focus_DEBUFFS_PER_ROW)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
+			buff:SetPoint("TOPLEFT", getglobal(buffName..(index-FOCUS_DEBUFFS_PER_ROW)), "BOTTOMLEFT", 0, -FocusFrame.buffSpacing);
 			FocusFrameDebuffs:SetPoint("BOTTOMLEFT", buff, "BOTTOMLEFT", 0, 0);
 			FocusFrame.buffRows = FocusFrame.buffRows+1;
 		else
